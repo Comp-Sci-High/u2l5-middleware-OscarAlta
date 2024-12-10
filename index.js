@@ -3,16 +3,19 @@ const app = express();
 
 // Step 1. Install express via the terminal
 
-// Step 2. Before the first route, create middleware that console logs the request method and request url
+// Step 2. Modify the all the existing route handlers, make sure to set the status as 200 (ok) for each of them.
+
+// Step 3. Before the first route, create middleware that console logs the request method and request url
 // Make sure to call next() inside the callback function
 
-// Step 3. Run your server and test the routes /, /pasta, & /pizza
+// Step 4. Run your server and test the routes /, /pasta, & /pizza
 // What do you see being console logged?
 
-// Step 4. Create middleware that console logs "YUM" only for the routes /pasta & /pizza
+// Step 5. Create middleware that console logs "YUM" only for the routes /pasta & /pizza but not /
 
-// Step 5. Create middleware that catches all undefined routes, and sends back "404 NOT FOUND" in an h1 tag
-// Does the placement of this middleware mattter?
+// Step 6. Create middleware that catches all undefined routes, and sends back "404 NOT FOUND" in an h1 tag. 
+// Set the status as 404 (Not Found)
+// Where should this middleware go? 
 
 app.get("/", (req, res) => {
   res.send(`<h1>Welcome to my resturant</h1>`);
