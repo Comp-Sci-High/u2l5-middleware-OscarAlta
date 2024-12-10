@@ -17,17 +17,35 @@ const app = express();
 // Set the status as 404 (Not Found)
 // Where should this middleware go? 
 
+app.use((req, res, next)=>{
+  console.log(req.method + "/" + req.url)
+next();
+})
+
+app.use((req, res, next)=>{
+if (req.url ==="/pasta" || req.url === "/pizza"){
+  console.log("Yum")
+}
+  next();
+})
+
+
 app.get("/", (req, res) => {
-  res.send(`<h1>Welcome to my resturant</h1>`);
+  res.status(200).send(`<h1>Welcome to my resturant</h1>`);
 });
 
 app.get("/pasta", (req, res) => {
-  res.send(`<h1>Pasta</h1><img src="http://bit.ly/3ZUcEpH" width="500px">`);
+  res.status(200).send(`<h1>Pasta</h1><img src="http://bit.ly/3ZUcEpH" width="500px">`);
 });
 
 app.get("/pizza", (req, res) => {
-  res.send(`<h1>Pizza</h1><img src="https://bit.ly/3ZH9OUL" width="500px">`);
+  res.status(200).send(`<h1>Pizza</h1><img src="https://bit.ly/3ZH9OUL" width="500px">`);
 });
+
+app.use((request, response, next) => {
+	response.status(404).send("<h1>404 (NOT FOUND)</h1>")
+})
+
 
 app.listen(3000, () => {
   console.log(`Server running at http://localhost:3000`);
